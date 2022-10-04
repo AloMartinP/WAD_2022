@@ -4,6 +4,18 @@
     padding: 0;
     text-decoration: none;
 }
+html, body{
+    height: 100%;
+}
+#wrap {
+    min-height: 100%;
+}
+
+#main {
+    overflow: auto;
+    padding-bottom: 8rem;
+    /* must be same height as the footer */
+}
 
 .main-header{
     display: flex;
@@ -69,9 +81,13 @@
     flex: 1;
 }
 .main-footer {
+    position: relative;
+    margin-top: -8rem;
+    /* negative value of footer height */
+    height: 8rem;
+    clear: both;
     display: flex;
     justify-content: center;
-    height: 8rem;
     background: linear-gradient(360deg, rgb(157, 65, 0) 0%, rgba(224,224,224,1) 85%, rgba(255,255,255,1) 100%);
 }
 .footer-nav {
@@ -90,6 +106,66 @@
 .footer-nav > a:hover {
     transition: 0.3s ease;
     color: white;
+}
+
+.addPost-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 3rem auto;
+    width: 35rem;
+    padding: 2rem 1.5rem;
+    background-color: rgb(225, 225, 225);
+    border-radius: 1.2rem;
+}
+
+.addPost-body {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.addPost-body input{
+    flex:1;
+}
+.addPost-body p{
+    padding: 0 2rem 0 0;
+    width: 5rem;
+}
+.select-file{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.select-file button {
+    flex: 1;
+}
+.select-file p{
+    width: 5rem;
+    padding: 0 2rem 0 0;
+}
+.addPost-section .post-submit-button {
+    display: flex;
+    justify-content: center;
+}
+.addPost-section > div {
+    padding: 1rem 0;
+}
+.addPost-section button {
+    border-radius: 1.2rem;
+    color: white;
+    background-color: orange;
+    border-width: 0.1rem;
+    padding: .5rem .8rem;
+}
+.addPost-section button:hover {
+    border-radius: 1.2rem;
+    color: white;
+    background-color: #da8e00;
+    border-width: 0.1rem;
+    padding: .5rem .8rem;
+}
+.create-post a{
+    all: unset;
 }
 
 
