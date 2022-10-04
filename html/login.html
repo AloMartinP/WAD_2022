@@ -8,15 +8,31 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 </head>
 <body>
+
 <header class="main-header">
     <div class="topnav">
         <a href="index.html">Home</a>
-        <a href="addPost.html">Add Post</a>
         <a href="../html/login.html">
             <i class="fa-solid fa-circle-user fa-xl"></i>
         </a>
     </div>
 </header>
+<main id="main-holder">
+    <h2 id="login-header">Welcome to PostIt</h2>
+    <h2 id="Create-account">Create an account</h2>
+    <h3 id="Login1">or</h3>
+    <h2 id="Login2">Please log in</h2>
+
+    <form id="login-form">
+        <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Email">
+        <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
+        <input type="submit" value="Log in" id="login-form-submit">
+    </form>
+
+    <h2 id="Forgetpassword">Forget password</h2>
+
+</main>
+
 <footer>
 
 </footer>
