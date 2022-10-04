@@ -29,18 +29,16 @@
     transition: 0.3s ease;
     color: orange;
 }
-.topnav > a:active{
-    color: orange;
-}
 .home-page-blog {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 3rem 0rem;
+    padding: 3rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .post {
     display: flex;
-    width: 60%;
+    width: 50rem;
     height: 50%;
     align-content: space-between;
     justify-content: space-between;
@@ -48,13 +46,50 @@
     padding: 2rem 1.5rem;
     background-color: rgb(225, 225, 225);
     border-radius: 1.2rem;
-    margin: auto;
+    margin: 2rem auto;
 }
-.post-head {
+.post button {
+    all:unset;
+    cursor: pointer;
+    margin: 1rem 1rem;
+}
+
+.post button:active i {
+    color: orange;
+}
+.post button:focus i {
+    color: orange;
+}
+.post>* {
     display: flex;
+    margin: 1rem 1rem;
+    align-content: center;
 }
 .post-head i {
     flex: 1;
+}
+.main-footer {
+    display: flex;
+    justify-content: center;
+    height: 8rem;
+    background: linear-gradient(360deg, rgb(157, 65, 0) 0%, rgba(224,224,224,1) 85%, rgba(255,255,255,1) 100%);
+}
+.footer-nav {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: auto;
+}
+.footer-nav > a{
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 600;
+    color: black;
+}
+
+.footer-nav > a:hover {
+    transition: 0.3s ease;
+    color: white;
 }
 
 
