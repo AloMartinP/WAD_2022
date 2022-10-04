@@ -5,50 +5,56 @@
     text-decoration: none;
 }
 
-.main-header {
+.main-header{
     display: flex;
+    justify-content: center;
+    height: 4rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.topnav {
+    display: flex;
+    width: 80%;
     justify-content: space-between;
-    align-items: center;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    border-bottom: 1px solid black;
+    margin: auto;
 }
-.page-title {
-    margin-left: 3rem;
-}
-
-.fa-circle-user {
-    margin-right: 3rem;
-}
-
-#page-logo{
-    color: black;
-    text-decoration: none;
-}
-
-.button4{
-    display:inline-block;
-    padding:1.2em 4em;
-    margin:0 0.1em 0.1em 0;
-    border:0.16em solid rgba(255,255,255,0);
-    border-radius:2em;
-    box-sizing: border-box;
-    text-decoration:none;
-    font-weight:600;
+.topnav > a{
     text-transform: uppercase;
-    color: rgb(255, 255, 255);
-    text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
-    text-align:center;
-    transition: all 0.2s;
-    background-color: rgb(210, 3, 3);
+    text-decoration: none;
+    font-weight: 600;
+    color: black;
 }
-.button4:hover{
-    border-color: rgb(241, 123, 123);
+
+.topnav > a:hover {
+    transition: 0.3s ease;
+    color: orange;
 }
-@media all and (max-width:30em) {
-    .button4 {
-        display: block;
-        margin: 0.2em auto;
-    }
+.topnav > a:active{
+    color: orange;
 }
+.home-page-blog {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 0rem;
+}
+.post {
+    display: flex;
+    width: 60%;
+    height: 50%;
+    align-content: space-between;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    background-color: rgb(225, 225, 225);
+    border-radius: 1.2rem;
+    margin: auto;
+}
+.post-head {
+    display: flex;
+}
+.post-head i {
+    flex: 1;
+}
+
 
