@@ -17,24 +17,34 @@
         </a>
     </div>
 </header>
-<main id="main-holder">
-    <h2 id="login-header">Welcome to PostIt</h2>
-    <h2 id="Create-account">Create an account</h2>
-    <h3 id="Login1">or</h3>
-    <h2 id="Login2">Please log in</h2>
+<div id="wrap">
+    <div id="main holder-div">
+        <main id="main-holder">
+            <h2 id="login-header">Welcome to PostIt</h2>
+            <h2 id="Create-account">Create an account</h2>
+            <h3 id="Login1">or</h3>
+            <h2 id="Login2">Please log in</h2>
+            <div class="form-input">
+                <form id="login-form">
+                    <input type="text" name="username" id="username-field" class="login-form-field" placeholder="yourEmail@email.com" required>
+                    <input type="password" name="password" id="password-field" class="login-form-field"
+                           placeholder="Password" required>
+                    <input type="button" name="loginButton" id="login-form-button" onclick="location.href='index.html';" >
+                </form>
+            </div>
 
-    <form id="login-form">
-        <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Email">
-        <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
-        <input type="submit" value="Log in" id="login-form-submit">
-    </form>
+            <h2 id="Forgetpassword">Forget password</h2>
 
-    <h2 id="Forgetpassword">Forget password</h2>
+        </main>
+    </div>
+</div>
 
-</main>
-
-<footer>
-
+<footer class="main-footer">
+    <div class="footer-nav">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+    </div>
 </footer>
 </body>
 </html>

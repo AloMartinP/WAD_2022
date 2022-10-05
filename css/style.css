@@ -168,4 +168,46 @@ html, body{
     all: unset;
 }
 
+#main-holder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+    background-color: rgb(225, 225, 225);
+    padding: 2rem 1rem;
+    border-radius: 1.2rem;
+}
+#main\ holder-div {
+    display: flex;
+    margin-top: 4rem;
+}
+#main-holder > * {
+    padding: .5rem 1rem;
+}
+.form-input > form {
+    display: flex;
+    flex-direction: column;
+}
+form > input, a {
+    margin: .2rem;
+    padding: .5rem;
+}
+
+form a {
+    text-align: center;
+}
+#login-form-button {
+    color: white;
+    background: cornflowerblue;
+}
+#login-form-button:hover {
+    background: blue;
+    transition: 1s ease-out;
+}
+#username-field:invalid {outline: solid red 1px}
+#password-field:invalid {outline: solid red 1px}
+
+
+
 
