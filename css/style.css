@@ -189,8 +189,8 @@ html, body{
     display: flex;
     flex-direction: column;
 }
-form > input, a {
-    margin: .2rem;
+form > input, button {
+    margin: .3rem;
     padding: .5rem;
 }
 
@@ -200,6 +200,8 @@ form a {
 #login-form-button {
     color: white;
     background: cornflowerblue;
+    border: none;
+    border-radius: 1.2rem;
 }
 #login-form-button:hover {
     background: blue;
@@ -208,6 +210,38 @@ form a {
 #username-field:invalid {outline: solid red 1px}
 #password-field:invalid {outline: solid red 1px}
 
+@media (max-width: 800px) {
+    .addPost-body {
+        flex-wrap: wrap;
+    }
+    .addPost-section  {
+        width: 50%;
+    }
+    .addPost-body {
+        width: 100%;
+    }
+    #addPost-body {
+        width: inherit;
+    }
+    .footer-nav {
+        flex-wrap: wrap;
+    }
+    .select-file {
+        flex-wrap: wrap;
+    }
+    .home-page-blog {
+        width: 50%;
+        margin: auto;
 
+    }
+    .home-page-blog > div, img {
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .post-head {
+        flex-wrap: wrap;
+    }
+}
 
 
