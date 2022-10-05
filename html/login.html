@@ -21,19 +21,18 @@
     <div id="main holder-div">
         <main id="main-holder">
             <h2 id="login-header">Welcome to PostIt</h2>
-            <h2 id="Create-account">Create an account</h2>
+            <h2 id="Create-account" ><a href="index.html">Create an account</a></h2>
             <h3 id="Login1">or</h3>
             <h2 id="Login2">Please log in</h2>
             <div class="form-input">
-                <form id="login-form">
-                    <input type="text" name="username" id="username-field" class="login-form-field" placeholder="yourEmail@email.com" required>
-                    <input type="password" name="password" id="password-field" class="login-form-field"
-                           placeholder="Password" required>
-                    <input type="button" name="loginButton" id="login-form-button" onclick="location.href='index.html';" >
+                <form id="login-form" action="index.html">
+                    <input type="text" name="username" id="username-field" class="login-form-field" placeholder="yourEmail@email.com" required/>
+                    <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password" required/>
+                    <button id="login-form-button">Log in</button>
                 </form>
             </div>
 
-            <h2 id="Forgetpassword">Forget password</h2>
+            <h2 id="Forgetpassword"><a href="index.html">Forget password</a></h2>
 
         </main>
     </div>
