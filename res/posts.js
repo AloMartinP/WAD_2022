@@ -6,16 +6,7 @@ window.onload = function () {
             displayPosts(json);
         }).catch(err => {
             console.log(err)
-        }).finally(() => {
-            let footer = document.createElement("footer");
-            footer.className = 'main-footer';
-            let div = document.createElement('div')
-            div.className = 'footer-nav';
-            footer.append(div);
-            let link = document.createElement('a');
-            link.innerText = 'Link 1';
-            footer.append(link);
-    })
+        })
 }
 
 function displayPosts(json) {
