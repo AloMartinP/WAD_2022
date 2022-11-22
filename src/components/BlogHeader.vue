@@ -3,6 +3,7 @@
     <div class="topnav">
       <a href="index.html">Home</a>
       <a href="addPost.html">Add Post</a>
+      <a href="login.html">Login</a>
       <div class="dropdown">
         <button onclick="toggleDropdown()" class="dropbtn fa-solid fa-circle-user fa-xl"></button>
         <div id="myDropdown" class="dropdown-content">
