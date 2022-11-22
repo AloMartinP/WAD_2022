@@ -5,21 +5,13 @@
     <router-link to="/about">Create post</router-link>
   </nav>
   <router-view/>
-  <TheNavbar />
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
 </template>
 
 <script>
-import TheNavbar from './components/TheNavbar'
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    TheNavbar,
-    HelloWorld
-  },
+  components: {},
   computed: {
 
   }
