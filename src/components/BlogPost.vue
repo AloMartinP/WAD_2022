@@ -24,7 +24,7 @@
 
     <button @click="increment">
       <font-awesome-icon icon="fa-solid fa-thumbs-up fa-xl"/>
-      {{ count }}
+      {{ post.likes }}
     </button>
 
   </div>
@@ -32,17 +32,12 @@
 
 <script>
 export default {
-  data() {
-    return {
-      count: 0
-    }
-  },
   name: "BlogPost",
   props: ['post'],
   methods: {
     increment() {
-      this.count++
-    }
+      this.$store.commit('likePost', this.post.id);
+    },
   },
 };
 

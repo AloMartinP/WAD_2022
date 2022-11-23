@@ -15,7 +15,14 @@ export default createStore({
     mutations: {
         SET_Item (state, items) {
             state.posts = items
-        }
+        },
+        resetAllPosts(state) {
+            state.posts.forEach(post => post.likes = 0);
+        },
+        likePost(state, postId) {
+            const post = state.posts.find(post => post.id === postId);
+            post.likes++;
+        },
     },
     actions: {
         loadItems({ commit }) {
@@ -28,7 +35,7 @@ export default createStore({
                 .then(response => response.data)
                 .then(posts => {
                     console.log(posts);
-                commit('SET_Item', posts)
+                    commit('SET_Item', posts.map(post => ({ ...post, likes: 0, })))
                 })
         }
     }
