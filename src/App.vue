@@ -1,20 +1,19 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/signup">Signup</router-link> |
-    <router-link to="/about">Create post</router-link>
-  </nav>
-  <router-view/>
+  <TheHeader/>
+  <TheFooter/>
 </template>
 
 <script>
-
+import TheHeader from '@/components/TheHeader.vue'
+import TheFooter from '@/components/TheFooter.vue'
 export default {
   name: 'App',
-  components: {},
-  computed: {
+  components: {
+    TheHeader,
+    TheFooter
+  },
 
-  }
+
 }
 </script>
 
