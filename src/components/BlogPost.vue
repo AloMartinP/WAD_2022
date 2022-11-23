@@ -1,63 +1,77 @@
 <template>
-  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-  <script src="https://kit.fontawesome.com/de237329f7.js" crossorigin="anonymous"></script>
-  <div class="post-list">
-    <div class="post">
-      <div class="top-row">
-          <div class="post-author">
-            <fa-icon icon="fa-solid fa-user-secret"/>
-            <p> {{ post.author }}</p>
-          </div>
-          <p class="post-time"> {{ post.time }}</p>
+  <div class="post">
+
+    <div class="top-row">
+
+      <div class="post-author">
+        <font-awesome-icon icon="fa-solid fa-user-secret"/>
+        <p> {{ post.author }}</p>
       </div>
-      <div class="post-body">
-        <img v-if="post.img" :src="post.img" alt="">
+
+      <p class="post-time"> {{ post.time }}</p>
+
+    </div>
+
+    <div class="post-body">
+
+      <img v-if="post.img" :src="post.img" alt="" class="responsive">
+
+      <div class="body-text">
         <p>{{ post.text }}</p>
       </div>
 
     </div>
+
+    <button @click="increment">
+      <font-awesome-icon icon="fa-solid fa-thumbs-up fa-xl"/>
+      {{ count }}
+    </button>
+
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      count: 0
+    }
+  },
   name: "BlogPost",
   props: ['post'],
+  methods: {
+    increment() {
+      this.count++
+    }
+  },
 };
 
 </script>
 
 <style scoped>
-.post-list {
-  display: flex;
-  flex-direction: column;
-  padding: 2rem 0 2rem 0;
-  margin: auto;
-  width: 80%;
-
-}
 .post {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-  border-radius: 3rem;
-  justify-content: center;
-  align-items: center;
+  margin: 2rem auto;
+  width: 80%;
+  border: 3px solid green;
+  padding: 10px;
+  border-radius: .5rem;
 }
-.post-body{
-  display: block;
-  width: 90%;
-  object-fit: cover;
+.responsive{
+  width: 100%;
+  height: auto;
 }
 .top-row {
   display: flex;
   justify-content: space-between;
-  width: 90%;
+  align-content: center;
+  padding: 0 3rem;
 }
-.post-author{
-  display: flex;
-  width: 25%;
-  align-items: center;
+button {
+  all: unset;
+  cursor: pointer;
+}
+.fa-thumbs-up{
+  color: #007bff;
 }
 
 </style>
