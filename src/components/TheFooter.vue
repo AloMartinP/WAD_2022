@@ -20,7 +20,7 @@ export default {
   display: flex;
   justify-content: center;
   width: 100%;
-  background: black;
+  background: lightgray;
 }
 .footer-nav {
   display: flex;
@@ -32,7 +32,7 @@ export default {
   text-transform: uppercase;
   text-decoration: none;
   font-weight: 600;
-  color: orangered;
+  color: rebeccapurple;
 }
 
 .footer-nav > a:hover {

@@ -84,6 +84,10 @@ export default {
 </script>
 
 <style scoped>
+#wrap {
+  height: 60vh;
+}
+
 #login-form {
   margin: auto;
   display: flex;
