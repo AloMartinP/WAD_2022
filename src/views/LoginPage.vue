@@ -3,7 +3,7 @@
     <div id="main holder-div">
       <main id="main holder">
         <div class="form-input">
-        <h2 id="login-header"> Welcome to postit </h2>
+          <h2 id="login-header"> Welcome to postit </h2>
           <form id="login-form" @submit.prevent="validateData">
             <div class="signupinput">
               <label>Email</label>
@@ -16,10 +16,12 @@
             <div class="button">
               <button>Login</button>
               <a>Or</a>
-              <button>Signup</button>
+              <button id="button">Signup</button>
+              <a href="SignUpPage.vue">Signup</a>
               <p v-if="valid"> Sign up successful</p>
               <p v-else>{{error}}</p>
             </div>
+
 
           </form>
         </div>
@@ -32,12 +34,12 @@
 export default {
   name: "SignUpPage",
   data() {
-      return {
-        username:"",
-        password:"",
-        valid:false,
-        error:""
-      };
+    return {
+      username:"",
+      password:"",
+      valid:false,
+      error:""
+    };
   },
   methods: {
     delay(time) {
@@ -87,7 +89,7 @@ export default {
 
 <style scoped>
 #wrap {
-  height: 70vh;
+  height: 60vh;
 }
 
 #login-form {
@@ -138,9 +140,8 @@ button{
   background: cornflowerblue;
   border: none;
   border-radius: 1.2rem;
-  margin-right: 15px;
-  margin-left: 20px;
-
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 
