@@ -14,7 +14,7 @@
               <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password" v-model="password" required/>
             </div>
             <div class="button">
-              <button @click="validateData">Login</button>
+              <button @click="login">Login</button>
               <a>Or</a>
               <button @click='this.$router.push("/signup")'>Signup</button>
 
@@ -36,11 +36,35 @@ export default {
     return {
       username:"",
       password:"",
-      valid:false,
-      error:""
     };
   },
   methods: {
+    login(){
+      var data = {
+        email: this.email,
+        password: this.password
+      };
+      // using Fetch - post method - send an HTTP post request to the specified URI with the defined body
+      fetch("http://localhost:3000/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: 'include', //  Don't forget to specify this if you need cookies
+        body: JSON.stringify(data),
+      })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            //this.$router.push("/");
+            location.assign("/");
+          })
+          .catch((e) => {
+            console.log(e);
+            console.log("error");
+          });
+    },
+
     delay(time) {
       return new Promise(resolve => setTimeout(resolve, time));
     },

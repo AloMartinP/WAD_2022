@@ -1,7 +1,8 @@
 <template>
+  <div class="wrap"></div>
+  <h1>Contact us!</h1>
   <div class="about">
-    <h1>Contact us!</h1>
-    <div class="profile-container">
+    <div class="profile-container" :key="i" v-for="i in 5">
       <div class="circle-wrapper">
         <img src="https://www.ivey.uwo.ca/imageGen.ashx?image=/media/3781222/executive-presence.jpg&width=1110&format=jpeg" alt="">
       </div>
@@ -22,9 +23,13 @@ export default {
 </script>
 
 <style scoped>
-.about {
+.wrap{
+  width: 100%;
   display: flex;
-  flex-direction: column;
+}
+.about {
+  margin: auto;
+  display: flex;
 }
 .circle-wrapper {
   display: inline-block;

@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import router from "../router/index.js";
 export default {
   name: "SignUpPage",
   data() {
@@ -52,7 +53,7 @@ export default {
           if (res.status === 400) {
             this.error = "User with this email already registered.";
           } else {
-            location.assign("/");
+            router.push("/signup")
             //this.$router.push("/");
           }
         }).catch((error) => {
