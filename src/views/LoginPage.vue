@@ -2,27 +2,25 @@
   <div id="wrap">
     <div id="main holder-div">
       <main id="main holder">
-        <div class="form-input">
+        <div id="login-form" class="form-input">
           <h2 id="login-header"> Welcome to postit </h2>
-          <form id="login-form">
-            <div class="signupinput">
-              <label>Email</label>
-              <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Email" v-model="this.username" required/>
-            </div>
-            <div class="signupinput">
-              <label>Password</label>
-              <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password" v-model="this.password" required/>
-            </div>
-            <div class="button">
-              <button @click="login">Login</button>
-              <a>Or</a>
-              <button @click='this.$router.push("/signup")'>Signup</button>
+          <div class="signupinput">
+            <label>Email</label>
+            <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Email" v-model="this.username" required/>
+          </div>
+          <div class="signupinput">
+            <label>Password</label>
+            <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password" v-model="this.password" required/>
+          </div>
+          <div class="button">
+            <button @click="login">Login</button>
+            <a>Or</a>
+            <button @click='this.$router.push("/signup")'>Signup</button>
 
-              <p v-if="valid"> Login successful</p>
-              <p v-else>{{error}}</p>
-            </div>
+            <p v-if="valid"> Login successful</p>
+            <p v-else>{{error}}</p>
+          </div>
 
-          </form>
         </div>
       </main>
     </div>
@@ -60,9 +58,9 @@ export default {
             location.assign("/");
           }
         }).catch((e) => {
-              console.log(e);
-              console.log("error");
-            });
+          console.log(e);
+          console.log("error");
+        });
       }
     },
     validateData() {
@@ -115,7 +113,7 @@ export default {
   align-items: center;
 }
 .form-input {
-  width: 70%;
+  width: 40%;
   margin: auto;
   color: black;
   font-weight: bold;

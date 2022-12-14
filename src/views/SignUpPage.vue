@@ -2,24 +2,23 @@
   <div id="wrap">
     <div id="main holder-div">
       <main id="main holder">
-        <div class="form-input">
-        <h2 id="login-header"> Welcome to postit </h2>
-          <form id="login-form">
-            <div class="signupinput">
-              <label>Email</label>
-              <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Email" v-model="this.username" required/>
-            </div>
-            <div class="signupinput">
-              <label>Password</label>
-              <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password" v-model="this.password" required/>
-            </div>
-            <div class="button">
-              <button @click="signup">Signup</button>
-              <p v-if="valid"> Sign up successful</p>
-              <p v-else>{{error}}</p>
-            </div>
+        <div id="login-form" class="form-input">
+          <h2 id="login-header"> Welcome to postit </h2>
 
-          </form>
+          <div class="signupinput">
+            <label>Email</label>
+            <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Email" v-model="this.username" required/>
+          </div>
+          <div class="signupinput">
+            <label>Password</label>
+            <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password" v-model="this.password" required/>
+          </div>
+          <div class="button">
+            <button @click="signup">Signup</button>
+            <p v-if="valid"> Sign up successful</p>
+            <p v-else>{{error}}</p>
+          </div>
+
         </div>
       </main>
     </div>
@@ -31,12 +30,12 @@ import router from "../router/index.js";
 export default {
   name: "SignUpPage",
   data() {
-      return {
-        username:"",
-        password:"",
-        valid:false,
-        error:""
-      };
+    return {
+      username:"",
+      password:"",
+      valid:false,
+      error:""
+    };
   },
   methods: {
     signup() {
@@ -111,7 +110,7 @@ export default {
   align-items: center;
 }
 .form-input {
-  width: 70%;
+  width: 40%;
   margin: auto;
   color: black;
   font-weight: bold;
