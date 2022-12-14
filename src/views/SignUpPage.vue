@@ -85,7 +85,7 @@ export default {
 
 <style scoped>
 #wrap {
-  height: 60vh;
+  height: 70vh;
 }
 
 #login-form {
