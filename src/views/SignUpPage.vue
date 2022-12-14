@@ -14,8 +14,6 @@
               <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password" v-model="password" required/>
             </div>
             <div class="button">
-              <button>Login</button>
-              <a>Or</a>
               <button>Signup</button>
               <p v-if="valid"> Sign up successful</p>
               <p v-else>{{error}}</p>
