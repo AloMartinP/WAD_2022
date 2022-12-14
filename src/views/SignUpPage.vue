@@ -52,8 +52,8 @@ export default {
           console.log(res.status);
           if (res.status === 400) {
             this.error = "User with this email already registered.";
-          } else {
-            router.push("/signup")
+          } else if (res.status === 201) {
+            router.push("/")
             //this.$router.push("/");
           }
         }).catch((error) => {

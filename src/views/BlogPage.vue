@@ -1,7 +1,7 @@
 <template>
   <div>
     <BlogPost v-for="post in posts" :post="post" :key="post.id"/>
-    <button class="reset-button" @click="resetAllPosts">Reset</button>
+    <button class="reset-button" >Reset</button>
   </div>
 </template>
 
@@ -10,6 +10,11 @@ import BlogPost from "@/components/BlogPost.vue";
 
 export default {
   name: "BlogPage",
+  data() {
+    return {
+      post: []
+    };
+  },
   components: {
     BlogPost
   },

@@ -14,8 +14,6 @@
 
     <div class="post-body">
 
-      <img v-if="post.img" :src="post.img" alt="" class="responsive">
-
       <div class="body-text">
         <p>{{ post.text }}</p>
       </div>
@@ -35,9 +33,6 @@ export default {
   name: "BlogPost",
   props: ['post'],
   methods: {
-    increment() {
-      this.$store.commit('likePost', this.post.id);
-    },
   },
 };
 

@@ -7,11 +7,11 @@
           <form id="login-form">
             <div class="signupinput">
               <label>Email</label>
-              <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Email" v-model="username" required/>
+              <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Email" v-model="this.username" required/>
             </div>
             <div class="signupinput">
               <label>Password</label>
-              <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password" v-model="password" required/>
+              <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password" v-model="this.password" required/>
             </div>
             <div class="button">
               <button @click="login">Login</button>
@@ -32,44 +32,38 @@
 <script>
 export default {
   name: "LoginPage",
-  data() {
+  data: function (){
     return {
       username:"",
       password:"",
+      error: "",
+      valid: false
     };
   },
   methods: {
     login(){
-      var data = {
-        email: this.email,
-        password: this.password
-      };
-      // using Fetch - post method - send an HTTP post request to the specified URI with the defined body
-      fetch("http://localhost:3000/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: 'include', //  Don't forget to specify this if you need cookies
-        body: JSON.stringify(data),
-      })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log(data);
-            //this.$router.push("/");
+      let data = this.validateData();
+      console.log(data);
+      if(data !== null) {
+        // using Fetch - post method - send an HTTP post request to the specified URI with the defined body
+        fetch("http://localhost:3000/auth/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: 'include', //  Don't forget to specify this if you need cookies
+          body: JSON.stringify(data),
+        }).then((response) => {
+          if (response.status === 401) {
+            this.error = "User not registered or wrong password"
+          } else {
             location.assign("/");
-          })
-          .catch((e) => {
-            console.log(e);
-            console.log("error");
-          });
-    },
-
-    delay(time) {
-      return new Promise(resolve => setTimeout(resolve, time));
-    },
-    changeView(){
-      this.$router.push("/")
+          }
+        }).catch((e) => {
+              console.log(e);
+              console.log("error");
+            });
+      }
     },
     validateData() {
       this.error = ""
@@ -99,12 +93,10 @@ export default {
         this.error = "password must contain '_' symbol"
       }
 
-      if (this.error === "") {
-        this.valid = true;
-        this.username = "";
-        this.password = "";
-        this.delay(2500).then(() => this.changeView())
+      if (this.error.length === 0) {
+        return {email:this.username, password:this.password}
       }
+      return null;
     }
   }
 }
