@@ -6,22 +6,12 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 import BlogPost from "@/components/BlogPost.vue";
 
 export default {
   name: "BlogPage",
   components: {
     BlogPost
-  },
-  computed: mapGetters(['posts']),
-  mounted() {
-    this.$store.dispatch('loadItems');
-  },
-  methods: {
-    resetAllPosts() {
-      this.$store.commit('resetAllPosts');
-    },
   },
 }
 </script>
