@@ -4,7 +4,7 @@
       <main id="main holder">
         <div class="form-input">
           <h2 id="login-header"> Welcome to postit </h2>
-          <form id="login-form" @submit.prevent="validateData">
+          <form id="login-form">
             <div class="signupinput">
               <label>Email</label>
               <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Email" v-model="username" required/>
@@ -14,14 +14,13 @@
               <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password" v-model="password" required/>
             </div>
             <div class="button">
-              <button>Login</button>
+              <button @click="validateData">Login</button>
               <a>Or</a>
-              <button id="button">Signup</button>
-              <a href="SignUpPage.vue">Signup</a>
-              <p v-if="valid"> Sign up successful</p>
+              <button @click='this.$router.push("/signup")'>Signup</button>
+
+              <p v-if="valid"> Login successful</p>
               <p v-else>{{error}}</p>
             </div>
-
 
           </form>
         </div>
@@ -140,8 +139,9 @@ button{
   background: cornflowerblue;
   border: none;
   border-radius: 1.2rem;
-  margin-right: 10px;
-  margin-left: 10px;
+  margin-right: 15px;
+  margin-left: 20px;
+
 }
 
 

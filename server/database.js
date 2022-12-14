@@ -2,7 +2,7 @@ const Pool = require('pg').Pool;
 
 const pool = new Pool({
     user: "postgres",
-    password: "",
+    password: "Pa11ase1",
     database: "testWad",
     host: "localhost",
     port: "5432"
@@ -11,13 +11,15 @@ const pool = new Pool({
 
 const execute = async(query) => {
     try {
-        await pool.connect();
-        await pool.query(query);
+        await pool.connect(); // gets connection
+        await pool.query(query); // sends queries
+        return true;
     } catch (error) {
         console.error(error.stack);
         return false;
     }
 };
+
 
 const createTblQuery = `
     CREATE TABLE IF NOT EXISTS "posttable" (

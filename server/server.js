@@ -1,26 +1,19 @@
 const express = require('express');
 const pool = require('./database');
 const cors = require('cors')
+const bcrypt = require('bcrypt');
+const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
+
 const port = process.env.PORT || 3000;
 
 const app = express();
 
 app.use(cors());
 
-//The express.json() function is a built-in middleware function in Express.
-//It parses incoming requests with JSON payloads and is based on body-parser.
 app.use(express.json());
 
-//"async and await make promises easier to write"
-// async makes a function return a Promise
-// The keyword async before a function makes the function return a promise.
-// Syntax:  "async(req, res) => {}"
-// await makes a function wait for a Promise
-// The await keyword can only be used inside an async function.
-// The await keyword makes the function pause the execution and wait for a resolved promise before it continues
-// Syntax:  "async(req, res) => {let value = await promise}"
 
-/*
 // Task 1
 app.post('/api/posts', async(req, res) => {
     try {
@@ -36,10 +29,10 @@ app.post('/api/posts', async(req, res) => {
     } catch (err) {
         console.error(err.message);
     }
-});
-*/
+}); 
 
-/*
+
+/* 
 // Task 2
 app.get('/api/posts', async(req, res) => {
     try {
@@ -54,28 +47,28 @@ app.get('/api/posts', async(req, res) => {
 });
  */
 
-/*
+/* 
 // Task 3
 app.get('/api/posts/:id', async(req, res) => {
     try {
         console.log("get a post with route parameter  request has arrived");
-        // The req.params property is an object containing properties mapped to the named route "parameters".
+        // The req.params property is an object containing properties mapped to the named route "parameters". 
         // For example, if you have the route /posts/:id, then the "id" property is available as req.params.id.
         const { id } = req.params; // assigning all route "parameters" to the id "object"
         const posts = await pool.query( // pool.query runs a single query on the database.
-            //$1 is mapped to the first element of { id } (which is just the value of id).
+            //$1 is mapped to the first element of { id } (which is just the value of id). 
             "SELECT * FROM posttable WHERE id = $1", [id]
         );
         res.json(posts.rows[0]); // we already know that the row array contains a single element, and here we are trying to access it
-        // The res.json() function sends a JSON response.
+        // The res.json() function sends a JSON response. 
         // This method sends a response (with the correct content-type) that is the parameter converted to a JSON string using the JSON.stringify() method.
     } catch (err) {
         console.error(err.message);
     }
-});
+}); 
 */
 
-/*
+/* 
 // Task 4
 app.put('/api/posts/:id', async(req, res) => {
     try {
@@ -92,7 +85,7 @@ app.put('/api/posts/:id', async(req, res) => {
 });
  */
 
-/*
+/* 
 // Task 5
 app.delete('/api/posts/:id', async(req, res) => {
     try {
@@ -106,7 +99,7 @@ app.delete('/api/posts/:id', async(req, res) => {
     } catch (err) {
         console.error(err.message);
     }
-});
+}); 
 */
 
 app.listen(port, () => {
