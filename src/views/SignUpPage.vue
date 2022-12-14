@@ -2,9 +2,9 @@
   <div id="wrap">
     <div id="main holder-div">
       <main id="main holder">
-        <div class="form-input">
+        <div id="login-form" class="form-input">
         <h2 id="login-header"> Welcome to postit </h2>
-          <form id="login-form">
+
             <div class="signupinput">
               <label>Email</label>
               <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Email" v-model="this.username" required/>
@@ -19,7 +19,6 @@
               <p v-else>{{error}}</p>
             </div>
 
-          </form>
         </div>
       </main>
     </div>
@@ -111,7 +110,7 @@ export default {
   align-items: center;
 }
 .form-input {
-  width: 70%;
+  width: 40%;
   margin: auto;
   color: black;
   font-weight: bold;
