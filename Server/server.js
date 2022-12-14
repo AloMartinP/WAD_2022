@@ -1,20 +1,91 @@
 // server.js
 const express = require('express');
 const pool = require('./database');
-const cors = require('cors')
+const cors = require('cors');
+const cookieParser = require('cookie-parser')
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
 const port = process.env.PORT || 3000;
 
 const app = express();
 
-app.use(cors());
+app.use(cors( {origin: "http://localhost:8080", credentials: true} ));
+app.use(cookieParser());
+app.use(express.json());
+
+const secret = "gdgdhdbcb770785rgdzqws"; // use a stronger secret
+const maxAge = 60 * 60; //unlike cookies, the expiresIn in jwt token is calculated by seconds not milliseconds
+
+const generateJWT = (id) => {
+    return jwt.sign({ id }, secret, { expiresIn: maxAge })
+    //jwt.sign(payload, secret, [options, callback]), and it returns the JWT as string
+}
+
 
 // The express.json() function is a built-in middleware function in Express.
 // It parses incoming requests with JSON payloads and is based on body-parser.
 //app.use(express.json());
 
-app.get("/", (req, res) => {
-    console.log("???");
+
+// is used to check whether a user is authinticated
+app.get('/auth/authenticate', async(req, res) => {
+    console.log('authentication request has been arrived');
+    const token = req.cookies.jwt; // assign the token named jwt to the token const
+    //console.log("token " + token);
+    let authenticated = false; // a user is not authenticated until proven the opposite
+    try {
+        if (token) { //checks if the token exists
+            //jwt.verify(token, secretOrPublicKey, [options, callback]) verify a token
+            await jwt.verify(token, secret, (err) => { //token exists, now we try to verify it
+                if (err) { // not verified, redirect to login page
+                    console.log(err.message);
+                    console.log('token is not verified');
+                    res.send({ "authenticated": authenticated }); // authenticated = false
+                } else { // token exists and it is verified
+                    console.log('author is authinticated');
+                    authenticated = true;
+                    res.send({ "authenticated": authenticated }); // authenticated = true
+                }
+            })
+        } else { //applies when the token does not exist
+            console.log('author is not authinticated');
+            res.send({ "authenticated": authenticated }); // authenticated = false
+        }
+    } catch (err) {
+        console.error(err.message);
+        res.status(400).send(err.message);
+    }
 });
+
+app.post('/auth/signup', async(req, res) => {
+    try {
+        console.log("a signup request has arrived");
+        console.log(req.body);
+        const { email, password } = req.body;
+
+        const salt = await bcrypt.genSalt(); //  generates the salt, i.e., a random string
+        const bcryptPassword = await bcrypt.hash(password, salt) // hash the password and the salt
+        const authUser = await pool.query( // insert the user and the hashed password into the database
+            "INSERT INTO users(email, password) values ($1, $2) RETURNING*", [email, bcryptPassword]
+        );
+        console.log(authUser.rows[0].id);
+        const token = await generateJWT(authUser.rows[0].id); // generates a JWT by taking the user id as an input (payload)
+        //console.log(token);
+        //res.cookie("isAuthorized", true, { maxAge: 1000 * 60, httpOnly: true });
+        //res.cookie('jwt', token, { maxAge: 6000000, httpOnly: true });
+        res
+            .status(201)
+            .cookie('jwt', token, { maxAge: 6000000, httpOnly: true })
+            .json({ user_id: authUser.rows[0].id })
+            .send;
+    } catch (err) {
+        console.error(err.message);
+        res.status(400).send(err.message);
+    }
+});
+
+
 app.listen(port, () => {
     console.log("Server is listening to port " + port)
 });

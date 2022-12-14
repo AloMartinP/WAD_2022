@@ -4,17 +4,17 @@
       <main id="main holder">
         <div class="form-input">
         <h2 id="login-header"> Welcome to postit </h2>
-          <form id="login-form" @submit.prevent="validateData">
+          <form id="login-form">
             <div class="signupinput">
               <label>Email</label>
-              <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Email" v-model="username" required/>
+              <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Email" v-model="this.username" required/>
             </div>
             <div class="signupinput">
               <label>Password</label>
-              <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password" v-model="password" required/>
+              <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password" v-model="this.password" required/>
             </div>
             <div class="button">
-              <button>Signup</button>
+              <button @click="signup">Signup</button>
               <p v-if="valid"> Sign up successful</p>
               <p v-else>{{error}}</p>
             </div>
@@ -38,11 +38,27 @@ export default {
       };
   },
   methods: {
-    delay(time) {
-      return new Promise(resolve => setTimeout(resolve, time));
-    },
-    changeView(){
-      this.$router.push("/")
+    signup() {
+      let data = this.validateData();
+      console.log(data);
+      if (data !== null) {
+        fetch("http://localhost:3000/auth/signup", {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          credentials: "include",
+          body: JSON.stringify(data),
+        }).then((res) => {
+          console.log(res.status);
+          if (res.status === 400) {
+            this.error = "User with this email already registered.";
+          } else {
+            location.assign("/");
+            //this.$router.push("/");
+          }
+        }).catch((error) => {
+          console.log(error);
+        })
+      }
     },
     validateData() {
       this.error = ""
@@ -72,12 +88,10 @@ export default {
         this.error = "password must contain '_' symbol"
       }
 
-      if (this.error === "") {
-        this.valid = true;
-        this.username = "";
-        this.password = "";
-        this.delay(2500).then(() => this.changeView())
+      if (this.error.length === 0) {
+        return {email:this.username, password:this.password}
       }
+      return null;
     }
   }
 }
