@@ -15,7 +15,7 @@ app.use(express.json());
 
 
 // Task 1
-app.post('/api/posts', async(req, res) => {
+app.post('./api/posts', async(req, res) => {
     try {
         console.log("a post request has arrived");
         const post = req.body;
