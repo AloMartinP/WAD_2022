@@ -3,7 +3,7 @@ const Pool = require('pg').Pool;
 const pool = new Pool({
     user: "postgres",
     password: "",
-    database: "testWad",
+    database: "WAD_2022",
     host: "localhost",
     port: "5432"
 });
@@ -29,9 +29,9 @@ const createUserTable = `
 
 const createPostsTable = `
     CREATE TABLE IF NOT EXISTS "posts" (
+    "id" SERIAL PRIMARY KEY,
     "title" VARCHAR(20) NOT NULL,
-    "body" VARCHAR(1000) NOT NULL,
-    "date" DATE NOT NULL
+    "body" VARCHAR(1000) NOT NULL
     );`;
 
 

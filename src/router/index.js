@@ -1,8 +1,10 @@
 import {createRouter, createWebHashHistory} from 'vue-router'
 import BlogPage from "@/views/BlogPage.vue";
 import SignUpPage from "@/views/SignUpPage.vue";
-import LoginPage from "@/views/LoginPage";
-import ContactUsView from "@/views/ContactUsView";
+import LoginPage from "@/views/LoginPage.vue";
+import ContactUsView from "@/views/ContactUsView.vue";
+import AddPost from "@/views/AddPost.vue"
+import APost from "@/views/APost.vue"
 
 const routes = [
     {
@@ -24,6 +26,16 @@ const routes = [
         path: "/contactus",
         name: 'contactus',
         component: ContactUsView
+    },
+    {
+        path: "/addpost",
+        name: "AddPost",
+        component: AddPost
+    },
+    {
+        path: "/:id",
+        name: "APost",
+        component: APost
     }
 ]
 
